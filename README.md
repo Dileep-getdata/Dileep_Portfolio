@@ -58,4 +58,4 @@ Open the `index.html` file and begin personalizing it. The file contains helpful
 - Upload your CV (e.g., in PDF format) to the `assets/` folder.
 - Create your favicon and add it to the root folder.
 
-Once you commit your changes, your new portfolio website will be live at `https://your-username.github.io` within a few minutes!
+Once you commit your changes, your new portfolio website will be live at `https://Dileep.github.io` within a few minutes!
