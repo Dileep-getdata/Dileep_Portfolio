@@ -50,8 +50,11 @@ function embedPowerBIDashboard() {
 
 
 function openImage(src) {
-    document.getElementById("imageModal").style.display = "flex";
-    document.getElementById("fullImage").src = src;
+    const modal = document.getElementById("imageModal");
+    const fullImage = document.getElementById("fullImage");
+
+    fullImage.src = src;
+    modal.style.display = "flex";
 }
 
 function closeImage() {
