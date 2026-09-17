@@ -48,5 +48,16 @@ function embedPowerBIDashboard() {
     console.log('Power BI dashboard embedded');
 }
 
+
+function openImage(src) {
+    document.getElementById("imageModal").style.display = "flex";
+    document.getElementById("fullImage").src = src;
+}
+
+function closeImage() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+
 // Initialize any additional components
 document.addEventListener('DOMContentLoaded', embedPowerBIDashboard);
