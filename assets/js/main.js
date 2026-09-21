@@ -49,17 +49,209 @@ function embedPowerBIDashboard() {
 }
 
 
+/* =========================================================
+   ADVANCED PORTFOLIO MOTION
+========================================================= */
+
+
+/* -----------------------------
+   CURSOR GLOW
+------------------------------ */
+
+const cursorGlow = document.querySelector(".cursor-glow");
+
+if (cursorGlow) {
+
+    document.addEventListener("mousemove", (e) => {
+
+        cursorGlow.style.left = `${e.clientX}px`;
+        cursorGlow.style.top = `${e.clientY}px`;
+
+    });
+
+}
+
+
+/* -----------------------------
+   SCROLL PROGRESS
+------------------------------ */
+
+const scrollProgress =
+    document.querySelector(".scroll-progress");
+
+window.addEventListener("scroll", () => {
+
+    const scrollTop =
+        window.scrollY;
+
+    const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const progress =
+        (scrollTop / documentHeight) * 100;
+
+    if (scrollProgress) {
+
+        scrollProgress.style.width =
+            `${progress}%`;
+
+    }
+
+});
+
+
+/* -----------------------------
+   PROJECT CARD MOUSE EFFECT
+------------------------------ */
+
+const projectCards =
+    document.querySelectorAll(".project-card");
+
+
+projectCards.forEach(card => {
+
+    card.addEventListener("mousemove", (e) => {
+
+        const rect =
+            card.getBoundingClientRect();
+
+        const x =
+            e.clientX - rect.left;
+
+        const y =
+            e.clientY - rect.top;
+
+        const centerX =
+            rect.width / 2;
+
+        const centerY =
+            rect.height / 2;
+
+        const rotateX =
+            ((y - centerY) / centerY) * -3;
+
+        const rotateY =
+            ((x - centerX) / centerX) * 3;
+
+        card.style.setProperty(
+            "--mouse-x",
+            `${x}px`
+        );
+
+        card.style.setProperty(
+            "--mouse-y",
+            `${y}px`
+        );
+
+        card.style.transform =
+            `translateY(-15px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)`;
+
+    });
+
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform =
+            "";
+
+    });
+
+});
+
+
+/* -----------------------------
+   SCROLL REVEAL
+------------------------------ */
+
+const revealElements =
+    document.querySelectorAll(
+        ".section h2, .about-content, .project-card, .skill-column, .contact-form"
+    );
+
+
+const revealObserver =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "revealed"
+                    );
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    element.classList.add("reveal");
+
+    revealObserver.observe(element);
+
+});
+
+
+/* -----------------------------
+   IMAGE MODAL
+------------------------------ */
+
 function openImage(src) {
-    const modal = document.getElementById("imageModal");
-    const fullImage = document.getElementById("fullImage");
+
+    const modal =
+        document.getElementById("imageModal");
+
+    const fullImage =
+        document.getElementById("fullImage");
 
     fullImage.src = src;
+
     modal.style.display = "flex";
+
+    document.body.style.overflow = "hidden";
+
 }
 
+
 function closeImage() {
-    document.getElementById("imageModal").style.display = "none";
+
+    const modal =
+        document.getElementById("imageModal");
+
+    modal.style.display = "none";
+
+    document.body.style.overflow = "";
+
 }
+
+
+/* Close modal with ESC */
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+        closeImage();
+
+    }
+
+});
 
 
 // Initialize any additional components
