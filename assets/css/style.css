@@ -528,13 +528,13 @@ footer p {
     --primary-color: #07111f;
     --secondary-color: #0d1b2f;
 
-    --accent-color: #29b6f6;
-    --accent-secondary: #7c4dff;
-    --accent-green: #00e5a0;
+   --accent-color: #38bdf8;
+    --accent-secondary: #8b5cf6;
+    --accent-green: #34d399;
 
     --white-color: #ffffff;
-    --dark-text-color: #e8f0f7;
-    --light-text-color: #91a4b7;
+    --dark-text-color: #f1f5f9;     
+    --light-text-color: #cbd5e1; 
 
     --light-bg-color: #07111f;
     --card-bg-color: rgba(15, 31, 52, 0.65);
